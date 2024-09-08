@@ -1,6 +1,6 @@
 # Exercise L7.E1
 
-get_input = input()
+get_input = input()     # get input file name from the user
 with open(get_input, 'r') as input_file:
     data_list = input_file.read().split('\n')
 
