@@ -1,7 +1,7 @@
 import os 
 os.environ['MPLCONFIGDIR'] = os.getcwd() + "/configs/"
 import matplotlib.pyplot as plt
-#from cs1033_evaluator import evaluate_lab7
+from cs1033_evaluator import evaluate_lab7
 
 MODEL_1_INPUT_FILE, MODEL_2_INPUT_FILE, MODEL_3_INPUT_FILE = input().split()
 ################################################################################
@@ -101,6 +101,6 @@ plt.show()
 
 ################################################################################
 # Please do not edit anything below this line.
-#evaluate_lab7()
+evaluate_lab7()
 
 ##################### End of the programme #####################################
