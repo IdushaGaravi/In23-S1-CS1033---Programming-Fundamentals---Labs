@@ -75,13 +75,7 @@ for files in get_file_name:         # call each function to get information
         max_acceleration_list.append('%0.1f'%(float(max_acceleration)))    # if above condition true return decimal point to one and append to a new list
     else:
         max_acceleration_list.append(max_acceleration)      # else append as it is
-        
-for j in range(len(max_acceleration_list)):
-    integer_part, decimal_part = max_acceleration_list[j].split('.')
-    if (float(max_acceleration_list[j])-float(integer_part)) == 0.00:   # check whether decimal point value is zero
-        max_acceleration_list[j] = '%0.1f'%(float(max_acceleration_list[j]))    # if above condition true return decimal point to one
->>>>>>> 8d4b388c3dda66a82d1ccb4ba4d4d12cc2c7c687
-        
+
 output_file = open('max_acceleration.txt', 'w')     # open output file to enter data
 
 for k in range(len(max_acceleration_list)):
