@@ -75,7 +75,7 @@ for files in get_file_name:         # call each function to get information
         max_acceleration_list.append('%0.1f'%(float(max_acceleration)))    # if above condition true return decimal point to one and append to a new list
     else:
         max_acceleration_list.append(max_acceleration)      # else append as it is
-
+        
 output_file = open('max_acceleration.txt', 'w')     # open output file to enter data
 
 for k in range(len(max_acceleration_list)):
