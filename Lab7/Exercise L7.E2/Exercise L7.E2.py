@@ -68,17 +68,18 @@ max_acceleration_list = []
 for files in get_file_name:         # call each function to get information
     speed_in_meters_per_second = convert_kmph_to_ms(files)
     acceleration_in_square_meter_per_second = get_acceleration(speed_in_meters_per_second)
-    max_acceleration_list.append('%0.2f'%(max(acceleration_in_square_meter_per_second)))    # get maximum acceleration to another list while converting to two decimal points
+    max_acceleration = '%0.2f'%(max(acceleration_in_square_meter_per_second))    # get maximum acceleration while converting to two decimal points
 
-for i in range(len(max_acceleration_list)):
-    integer_part, decimal_part = max_acceleration_list[i].split('.')
-    if (float(max_acceleration_list[i])-float(integer_part)) == 0.00:   # check whether decimal point value is zero
-        max_acceleration_list[i] = '%0.1f'%(float(max_acceleration_list[i]))    # if above condition true return decimal point to one
+    integer_part, decimal_part = max_acceleration.split('.')
+    if (float(max_acceleration)-float(integer_part)) == 0.00:   # check whether decimal point value is zero
+        max_acceleration_list.append('%0.1f'%(float(max_acceleration)))    # if above condition true return decimal point to one and append to a new list
+    else:
+        max_acceleration_list.append(max_acceleration)      # else append as it
         
 output_file = open('max_acceleration.txt', 'w')     # open output file to enter data
 
-for j in range(len(max_acceleration_list)):
-    output_file.write(f'model{j+1} {str(max_acceleration_list[j])}\n')      # write maximum acceleration into the output file in given manner
+for k in range(len(max_acceleration_list)):
+    output_file.write(f'model{k+1} {str(max_acceleration_list[k])}\n')      # write maximum acceleration into the output file in given manner
 
 output_file.close()     # close output file
 # Plotting the lines with different styles
