@@ -89,7 +89,6 @@ Level_1 = ['Level_1']
 Level_2 = ['Level_2']
 Level_3 = ['Level_3']
 Level_4 = ['Level_4']
-Level_5 = ['Level_5']
 
 for chemical_name, elements in chemical_formula.items():
     level = categorizing_chemicals(elements)
@@ -97,6 +96,8 @@ for chemical_name, elements in chemical_formula.items():
         Level_0.append(chemical_name)
     elif level == 'Level_1':
         Level_1.append(chemical_name)
+    elif level == 'Level_2':
+        Level_2.append(chemical_name)
     elif level == 'Level_3':
         Level_3.append(chemical_name)
     else:
@@ -110,9 +111,12 @@ final_list.append(Level_3)
 final_list.append(Level_4)
 
 for file in range(len(final_list)):
-    with open(final_list[file][0], 'w') as output_file:
+    file_name = f"{final_list[file][0]}.txt"
+    with open(file_name, 'w') as output_file:
         output_data = final_list[file][1:]
         output_file.write('\n'.join(map(str,output_data)))
+        if len(output_data) != 0:
+            output_file.write('\n')
    
     
 ################################################################################
