@@ -63,34 +63,34 @@ def categorizing_chemicals(elements):
 
 def get_data_from_input_file(file_name):
     chemical_formula = {}
-    with open(file_name, 'r') as input_file:
-        get_data = input_file.read().strip().split('\n')
+    with open(file_name, 'r') as input_file:        # open input file, read and close it
+        get_data = input_file.read().strip().split('\n')    # read data from input file
 
     for data in get_data:
         chemical_name, molecular_structure = data.strip().split()
         molecular_formula = molecular_structure.split('-')
         sub_list = []
         for i in molecular_formula:
-            number = re.findall(r'[0-9]+', i)
-            if not number:
+            number = re.findall(r'[0-9]+', i)   # seperate chemical formula and number of atoms
+            if not number:      # when the number of atoms are not given consider it as 1
                 number = ['1']
             element = re.findall(r'[a-zA-Z]+', i)
 
             sub_list.append([''.join(element), ''.join(number)])
 
-        chemical_formula[chemical_name] = sub_list
+        chemical_formula[chemical_name] = sub_list      # key = chemical name, values = chemical formula and number of atoms
 
     return chemical_formula
 
 chemical_formula = get_data_from_input_file(INPUT_FILE_NAME)
 
-Level_0 = ['Level_0']
+Level_0 = ['Level_0']       
 Level_1 = ['Level_1']
 Level_2 = ['Level_2']
 Level_3 = ['Level_3']
 Level_4 = ['Level_4']
 
-for chemical_name, elements in chemical_formula.items():
+for chemical_name, elements in chemical_formula.items():    # add each compound to the correct level
     level = categorizing_chemicals(elements)
     if level == 'Level_0':
         Level_0.append(chemical_name)
@@ -111,8 +111,8 @@ final_list.append(Level_3)
 final_list.append(Level_4)
 
 for file in range(len(final_list)):
-    file_name = f"{final_list[file][0]}.txt"
-    with open(file_name, 'w') as output_file:
+    file_name = f"{final_list[file][0]}.txt"    
+    with open(file_name, 'w') as output_file:       # open file for  each level
         output_data = final_list[file][1:]
         output_file.write('\n'.join(map(str,output_data)))
         if len(output_data) != 0:
